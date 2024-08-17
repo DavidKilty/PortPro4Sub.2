@@ -1,0 +1,59 @@
+@import url(https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@200..900); 
+
+:root {
+    /** Fonts */ 
+  --title: 'Crimson Pro', serif;
+  --main-font: 'Crimson Pro', serif;
+
+  /* Colours*/
+  --background: #051717; 
+  --blue: #1fdfed; 
+  --black: #0e0d0d; 
+  --off-white: #f4faffc9; 
+  --white: #ffffffb2;
+  --orange: #ffc760;
+
+  /* Util */
+  --smal-box-shadow: 1px -1px 7px 0 #000000;
+  --border: 1px solid #120505;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--main-font);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--title);
+}
+
+main{
+    flex: 1 0 auto;
+    background-color: var(--white);
+}
+
+/*Footer*/
+
+footer{
+    flex-shrink: 0;
+}
+
+/* Header */
+
+.navbar {
+    background-color: var(--off-white);
+    box-shadow: var(--smal-box-shadow);
+}
+
+a.nav-link {
+    color: var(--black);
+}
+
+img.logo {
+    width: 18.75rem;
+}
