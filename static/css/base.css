@@ -41,6 +41,16 @@ main{
 
 footer{
     flex-shrink: 0;
+    background-color: var(--off-white);
+    display: flex;
+    flex-direction: center;
+    align-items: center;
+    border-top: var(--border);
+}
+
+.social.icon {
+    height: 2rem;
+    width: 1rem;
 }
 
 /* Header */
