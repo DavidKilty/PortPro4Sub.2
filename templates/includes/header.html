@@ -9,18 +9,18 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto mb-2">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Tipper Jar</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Tippee Jar</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled">Sign Up</a>
-              </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" {% if url_name == 'accounts_signup' %}active{% endif %}" href="templates/allauth/account/signup.html">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Log In</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled">Log Out</a>
+                </li>
             </ul>
           </div>
         </div>

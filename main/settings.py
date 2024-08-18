@@ -27,8 +27,18 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ 
 
-ALLOWED_HOSTS = ['8000-davidkilty-portpro4sub2-4j687tismx9.ws.codeinstitute-ide.net']
 
+ALLOWED_HOSTS = [
+    '8000-davidkilty-portpro4sub2-4j687tismx9.ws.codeinstitute-ide.net',
+    'https://8000-davidkilty-portpro4sub2-4j687tismx9.ws.codeinstitute-ide.net',
+    'https://8000-davidkilty-portpro4sub2-4j687tismx9.ws.codeinstitute-ide.net/admin/login/?next=/admin/',
+    ]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-davidkilty-portpro4sub2-4j687tismx9.ws.codeinstitute-ide.net',
+    'https://8000-davidkilty-portpro4sub2-4j687tismx9.ws.codeinstitute-ide.net',
+    'https://8000-davidkilty-portpro4sub2-4j687tismx9.ws.codeinstitute-ide.net/admin/login/?next=/admin/',
+]
 
 # Application definition
 
@@ -39,17 +49,25 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles', 
-    'django.contrib.sites'
-    'django.contrib.sitesallauth'
-    'django.contrib.sitesdjango'
-
+    'django.contrib.sites',
+    
+    
     'allauth',
     'allauth.account',
-    'allauth.socialaccount'
+    'allauth.socialaccount',
 
     # Apps 
     'home', 
+
+    # Other Apps
+    'crispy_forms',
+    'crispy_bootstrap5',
+
 ]
+
+     
+
+
 
 SITE_ID = 1
 
@@ -61,7 +79,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
+
+CRISPTY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 ROOT_URLCONF = 'main.urls'
 
@@ -69,7 +91,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-           os.path.join(BASE_DIR, 'templates') 
+           os.path.join(BASE_DIR, 'templates'),
+           os.path.join(BASE_DIR, 'templates', 'allauth')
+
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -79,6 +103,10 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field'
+            ]
         },
     },
 ]
@@ -136,6 +164,17 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+ACCOUNT_AUTHENTIFICATION_METHOD = 'user_email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_USERNAME_MIN_LENGTH = 4
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
+
+
+
 
 
 # Static files (CSS, JavaScript, Images)
